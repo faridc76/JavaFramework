@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!--
+    Authors: m.huang.11, f.chouakria.13
+ -->
+<hibernate-mapping package="fr.esigelec.garage">
+  <class name="Voiture" table="voiture">
+    <id name="id" column="id">
+      <generator class="native"/>
+    </id>
+    <property name="immatriculation" type="string"/>
+    <property name="modele" type="string"/>
+    <property name="anneeConstruction" type="integer"/>
+    <property name="km" type="integer"/>
+  </class>
+</hibernate-mapping>

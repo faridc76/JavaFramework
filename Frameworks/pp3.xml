@@ -1,0 +1,60 @@
+<log4j:event logger="TP1.PP3" timestamp="1446369609685" level="FATAL" thread="main">
+<log4j:message><![CDATA[Erreur fatal]]></log4j:message>
+</log4j:event>
+
+<log4j:event logger="TP1.PP3" timestamp="1446369609691" level="ERROR" thread="main">
+<log4j:message><![CDATA[Erreur]]></log4j:message>
+</log4j:event>
+
+<log4j:event logger="TP1.PP3" timestamp="1446369609692" level="WARN" thread="main">
+<log4j:message><![CDATA[Avertissement]]></log4j:message>
+</log4j:event>
+
+<log4j:event logger="TP1.PP3" timestamp="1446369609692" level="INFO" thread="main">
+<log4j:message><![CDATA[Information]]></log4j:message>
+</log4j:event>
+
+<log4j:event logger="TP1.PP3" timestamp="1446369609693" level="DEBUG" thread="main">
+<log4j:message><![CDATA[Debug]]></log4j:message>
+</log4j:event>
+
+<log4j:event logger="TP1.PP3" timestamp="1446370603995" level="FATAL" thread="main">
+<log4j:message><![CDATA[Erreur fatal]]></log4j:message>
+</log4j:event>
+
+<log4j:event logger="TP1.PP3" timestamp="1446370604001" level="ERROR" thread="main">
+<log4j:message><![CDATA[Erreur]]></log4j:message>
+</log4j:event>
+
+<log4j:event logger="TP1.PP3" timestamp="1446370604002" level="WARN" thread="main">
+<log4j:message><![CDATA[Avertissement]]></log4j:message>
+</log4j:event>
+
+<log4j:event logger="TP1.PP3" timestamp="1446370604002" level="INFO" thread="main">
+<log4j:message><![CDATA[Information]]></log4j:message>
+</log4j:event>
+
+<log4j:event logger="TP1.PP3" timestamp="1446370604002" level="DEBUG" thread="main">
+<log4j:message><![CDATA[Debug]]></log4j:message>
+</log4j:event>
+
+<log4j:event logger="TP1.PP3" timestamp="1446370753002" level="FATAL" thread="main">
+<log4j:message><![CDATA[Erreur fatal]]></log4j:message>
+</log4j:event>
+
+<log4j:event logger="TP1.PP3" timestamp="1446370753008" level="ERROR" thread="main">
+<log4j:message><![CDATA[Erreur]]></log4j:message>
+</log4j:event>
+
+<log4j:event logger="TP1.PP3" timestamp="1446370753008" level="WARN" thread="main">
+<log4j:message><![CDATA[Avertissement]]></log4j:message>
+</log4j:event>
+
+<log4j:event logger="TP1.PP3" timestamp="1446370753008" level="INFO" thread="main">
+<log4j:message><![CDATA[Information]]></log4j:message>
+</log4j:event>
+
+<log4j:event logger="TP1.PP3" timestamp="1446370753009" level="DEBUG" thread="main">
+<log4j:message><![CDATA[Debug]]></log4j:message>
+</log4j:event>
+

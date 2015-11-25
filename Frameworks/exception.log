@@ -1,0 +1,5 @@
+2015-11-01 11:52:47,742 Information 1
+2015-11-01 11:52:47,745 Information 2
+2015-11-01 11:52:47,747 Voici une exception : 
+java.lang.ArithmeticException: / by zero
+	at TP1.PP4.main(PP4.java:49)

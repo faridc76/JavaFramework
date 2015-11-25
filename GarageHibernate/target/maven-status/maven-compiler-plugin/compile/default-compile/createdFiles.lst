@@ -1,0 +1,4 @@
+fr\esigelec\garage\App.class
+fr\esigelec\garage\HibernateUtil.class
+fr\esigelec\garage\Voiture.class
+fr\esigelec\garage\VoitureDAO.class

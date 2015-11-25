@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!--
+    Authors: m.huang.11, f.chouakria.13
+ -->
+<hibernate-mapping package="fr.esigelec.projetHibernate.dto">
+  <class name="Ville" table="ville">
+    <meta attribute="class-description">
+      Cette classe contient des info d'une ville.
+    </meta>
+    <id name="id" type="int">
+      <generator class="native"/>
+    </id>
+    <property name="nom" type="string"/>
+    <property name="nbHabitants" column="nb_habitants" type="int"/>
+    <!--
+      *
+      * La relation one-to-many est définie ici. 
+      *
+     -->
+    <many-to-one name="pays" column="id_pays" class="Pays" 
+        cascade="all" unique="true" not-null="true"/>
+  </class>
+  <class name="Pays" table="pays">
+    <meta attribute="class-description">
+      Cette classe contient des info d'un pays.
+    </meta>
+    <id name="id" type="int">
+      <generator class="native"/>
+    </id>
+    <property name="nom" type="string"/>
+    <property name="superficie" type="float"/>
+  </class>
+</hibernate-mapping>

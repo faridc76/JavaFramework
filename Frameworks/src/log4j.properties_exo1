@@ -1,0 +1,7 @@
+# Root logger option
+#log4j.rootLogger=INFO, monAppender
+
+# Direct log messages to LOGGER
+#log4j.appender.monAppender=org.apache.log4j.ConsoleAppender
+#log4j.appender.monAppender.layout=org.apache.log4j.PatternLayout
+#log4j.appender.monAppender.layout.ConversionPattern=%d %m%n
