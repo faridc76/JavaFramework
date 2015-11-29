@@ -34,14 +34,16 @@ public class DAOFactoryMain {
 		System.out.println(pays);
 		List<Ville> villes = jdbc.getVilleDAO().getVilles();
 		for(Ville v : villes) {
-			if (pays.getId() == v.getId()) {
+			if (pays.getId() == v.getPays().getId()) {
 				System.out.println(v);
 			}
 		}
+		
 		System.out.println("-----ADD:JDBC-----");
-		Ville paris = new Ville(0, "Rouen", 2244000, france);
-		System.out.println(paris);
+		Ville paris = new Ville(0, "Paris", 2244000, france);
 		jdbc.getVilleDAO().ajouter(paris);
+		System.out.println(paris);
+		
 		System.out.println("-----DELETE:HIBERNATE-----");
 		hibernate.getPaysDAO().delete(france);
 			
