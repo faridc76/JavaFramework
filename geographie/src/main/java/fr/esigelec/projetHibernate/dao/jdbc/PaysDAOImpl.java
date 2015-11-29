@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.mysql.jdbc.Statement;
+
 import fr.esigelec.projetHibernate.dao.IPaysDAO;
 import fr.esigelec.projetHibernate.dto.Pays;
 
@@ -18,17 +20,26 @@ public class PaysDAOImpl implements IPaysDAO {
 	public void ajouter(Pays p) throws SQLException {
 		//On recupere la connexion
 		con = ConnexionBDDPool.getInstance().getConnection();
+		//Utile pour récuperer l'id de la ligne ajouté a la table
+		//Statement statement = null;
 		PreparedStatement ps = null;
 		// La requete
 		ps = con.prepareStatement(
 				"INSERT INTO pays ("
 				+ "nom, "
-				+ "superficie) VALUES(?, ?)");
+				+ "superficie) VALUES(?, ?)",  Statement.RETURN_GENERATED_KEYS);
 		//On ajoute les parametre
 		ps.setString(1, p.getNom());
 		ps.setFloat(2, p.getSuperficie());
 		//On execute la requete
 		ps.execute();
+		//On recupere l'id généré
+		ResultSet rs = ps.getGeneratedKeys();
+		if (rs != null && rs.first()) {
+			// on récupère l'id généré
+			//On l'ajoute au pays
+			p.setId(rs.getInt(1));
+		}
 		ps.close();
 		//on ferme la connexion
 		con.close();	
@@ -39,7 +50,7 @@ public class PaysDAOImpl implements IPaysDAO {
 		//On recupere la connexion
 		con = ConnexionBDDPool.getInstance().getConnection();
 		//On recupere la requete
-		PreparedStatement ps =  con.prepareStatement("SELECT * FROM pays  WHERE 'id' = ?");
+		PreparedStatement ps =  con.prepareStatement("SELECT * FROM pays  WHERE `id` = ?");
 		//On ajoute notre parametre
 		ps.setInt(1, id);
 		//On execute la requete
@@ -49,6 +60,7 @@ public class PaysDAOImpl implements IPaysDAO {
 		//On crée un pays
 		Pays p = new Pays();
 		//on ajoute les infos au pays
+		
 		p.setId(rs.getInt("id"));
 		p.setNom(rs.getString("nom"));
 		p.setSuperficie(rs.getFloat("superficie"));
@@ -92,7 +104,7 @@ public class PaysDAOImpl implements IPaysDAO {
 		//On recupere la connexion
 		con = ConnexionBDDPool.getInstance().getConnection();
 		//On recupere la requete
-		PreparedStatement ps =  con.prepareStatement("SELECT * FROM pays  WHERE 'nom' = ?");
+		PreparedStatement ps =  con.prepareStatement("SELECT * FROM pays  WHERE `nom` = ?");
 		//On ajoute notre parametre
 		ps.setString(1, nomPays);
 		//On execute la requete
@@ -135,7 +147,7 @@ public class PaysDAOImpl implements IPaysDAO {
 		//On recupere la connexion
 		con = ConnexionBDDPool.getInstance().getConnection();
 		//La requete
-		PreparedStatement ps =  con.prepareStatement("DELETE * FROM pays WHERE 'id' = ?");
+		PreparedStatement ps =  con.prepareStatement("DELETE FROM pays WHERE `id` = ?");
 		//On ajoute notre parametre
 		ps.setInt(1, p.getId());
 		//On execute la requete

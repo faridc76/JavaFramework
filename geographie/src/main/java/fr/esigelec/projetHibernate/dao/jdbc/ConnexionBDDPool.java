@@ -13,7 +13,7 @@ public class ConnexionBDDPool {
 
 	private static ConnexionBDDPool instance = null; 
 	private DataSource datasource;
-	private final int nbConnexionActive =10;
+	private final int nbConnexionActive = 10;
 	
 	private ConnexionBDDPool() {
 

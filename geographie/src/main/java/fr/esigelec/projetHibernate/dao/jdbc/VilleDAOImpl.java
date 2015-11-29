@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.mysql.jdbc.Statement;
+
 import fr.esigelec.projetHibernate.dao.IVilleDAO;
 import fr.esigelec.projetHibernate.dto.Pays;
 import fr.esigelec.projetHibernate.dto.Ville;
@@ -26,12 +28,19 @@ public class VilleDAOImpl implements IVilleDAO {
 				+ "nom, "
 				+ "nb_habitants,"
 				+ "id_pays)"
-				+ " VALUES(?, ?)");
+				+ " VALUES(?, ?, ?)",  Statement.RETURN_GENERATED_KEYS);
 		ps.setString(1, v.getNom());
 		ps.setInt(2,v.getNbHabitants());
 		ps.setInt(3,v.getPays().getId());
 		//On execute la requete
 		ps.execute();
+		//On recupere l'id généré
+		ResultSet rs = ps.getGeneratedKeys();
+		if (rs != null && rs.first()) {
+			// on récupère l'id généré
+			//On l'ajoute au pays
+			v.setId(rs.getInt(1));
+		}
 		ps.close();
 		//On ferme la connexion
 		con.close();
@@ -43,7 +52,7 @@ public class VilleDAOImpl implements IVilleDAO {
 		//On recupere la connexion
 		con = ConnexionBDDPool.getInstance().getConnection();
 		//On recupere la requete
-		PreparedStatement ps =  con.prepareStatement("SELECT * FROM ville  WHERE 'id' = ?");
+		PreparedStatement ps =  con.prepareStatement("SELECT * FROM ville  WHERE `id` = ?");
 		//On ajoute notre parametre
 		ps.setInt(1, id);
 		//On execute la requete
@@ -94,6 +103,7 @@ public class VilleDAOImpl implements IVilleDAO {
 			//On recupere le pays lié à la ville
 			
 			Pays p = dao.getPays(idPays);
+			System.out.println(p);
 			//on ajoute le pays a la ville
 			v.setPays(p);
 			//on ajoute la ville à la liste
@@ -128,7 +138,7 @@ public class VilleDAOImpl implements IVilleDAO {
 		//On recupere la connexion
 		con = ConnexionBDDPool.getInstance().getConnection();
 		//La requete
-		PreparedStatement ps =  con.prepareStatement("DELETE * FROM ville WHERE 'id' = ?");
+		PreparedStatement ps =  con.prepareStatement("DELETE FROM ville WHERE `id` = ?");
 		//On ajoute notre parametre
 		ps.setInt(1, v.getId());
 		//On execute la requete

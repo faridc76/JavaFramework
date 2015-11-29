@@ -3,10 +3,11 @@ package fr.esigelec.projetHibernate;
 import java.sql.SQLException;
 import java.util.List;
 
+import fr.esigelec.projetHibernate.dao.DAOFactory;
 import fr.esigelec.projetHibernate.dao.IPaysDAO;
 import fr.esigelec.projetHibernate.dao.IVilleDAO;
-import fr.esigelec.projetHibernate.dao.hibernate.PaysDAOImpl;
-import fr.esigelec.projetHibernate.dao.hibernate.VilleDAOImpl;
+import fr.esigelec.projetHibernate.dao.jdbc.PaysDAOImpl;
+import fr.esigelec.projetHibernate.dao.jdbc.VilleDAOImpl;
 import fr.esigelec.projetHibernate.dto.Pays;
 import fr.esigelec.projetHibernate.dto.Ville;
 
@@ -21,8 +22,9 @@ public class Main {
 		
 		ex6_crud();
 		ex6_cascade("none");
-		ex6_cascade("all");
-		ex6_null();
+		//ex6_cascade("all");
+		//Gènere une erreur
+		//ex6_null();
 
 	}
 	
@@ -45,8 +47,9 @@ public class Main {
 		// Create
 		System.out.println("-----CREATE-----");
 		paysHbmDao.ajouter(france);
+		System.out.println(france);
 		villeHbmDao.ajouter(rouen);
-		
+		System.out.println(rouen);
 		// Read
 		System.out.println("-----READ-----");
 		pays = paysHbmDao.getPays();
@@ -109,7 +112,7 @@ public class Main {
 				// ajout
 				Pays algerie = new Pays(0, "الدزاير - Algérie", 2381741);
 				Ville alger = new Ville(0, "الدزاير - Alger", 20000000, algerie);
-				//paysHbmDao.ajouter(algerie);
+				paysHbmDao.ajouter(algerie);
 				villeHbmDao.ajouter(alger);
 				// lecture
 				villes = villeHbmDao.getVilles();
@@ -121,7 +124,8 @@ public class Main {
 	
 	private static void ex6_null() throws SQLException {
 		System.out.println("Ville sans pays");
-		IVilleDAO villeHbmDao = new VilleDAOImpl();     // impl hibernate
+		IVilleDAO villeHbmDao = new VilleDAOImpl();    // impl hibernate
+		//Le pays est null
 		Ville paris = new Ville(0, "Paris", 2241346, null);
 		villeHbmDao.ajouter(paris);
 	}
