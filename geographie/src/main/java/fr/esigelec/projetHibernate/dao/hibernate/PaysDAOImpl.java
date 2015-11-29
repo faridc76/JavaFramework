@@ -1,5 +1,6 @@
 package fr.esigelec.projetHibernate.dao.hibernate;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -19,7 +20,7 @@ public class PaysDAOImpl implements IPaysDAO {
 	 * Ajouter un pays
 	 * @param p pays
 	 */
-	public void ajouter(Pays p) {
+	public void ajouter(Pays p) throws SQLException {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		session.save(p);
@@ -32,7 +33,7 @@ public class PaysDAOImpl implements IPaysDAO {
 	 * @param id id du pays
 	 * @return instance pays
 	 */
-	public Pays getPays(int id) {
+	public Pays getPays(int id) throws SQLException {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		Pays retour = (Pays) session.get(Pays.class, id);
@@ -45,7 +46,7 @@ public class PaysDAOImpl implements IPaysDAO {
 	 * Récupération de l'ensemble de pays
 	 * @return tous pays
 	 */
-	public List<Pays> getPays() {
+	public List<Pays> getPays() throws SQLException {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		// get pays en utilisant HQL
@@ -62,7 +63,7 @@ public class PaysDAOImpl implements IPaysDAO {
 	 * @param nomPays nom du pays
 	 * @return instance pays
 	 */
-	public Pays getPays(String nomPays) {
+	public Pays getPays(String nomPays) throws SQLException {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		// get pays en utilisant HQL
@@ -79,7 +80,7 @@ public class PaysDAOImpl implements IPaysDAO {
 	 * Mise-à-jour d'un pays
 	 * @param p pays
 	 */
-	public void update(Pays p) {
+	public void update(Pays p) throws SQLException {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		session.update(p);
@@ -91,7 +92,7 @@ public class PaysDAOImpl implements IPaysDAO {
 	 * Suppression d'un pays
 	 * @param p
 	 */
-	public void delete(Pays p) {
+	public void delete(Pays p) throws SQLException {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		session.delete(p);
@@ -103,7 +104,7 @@ public class PaysDAOImpl implements IPaysDAO {
 	 * Refresh d'un pays
 	 * @param p pays
 	 */
-	public void refresh(Pays p) {
+	public void refresh(Pays p) throws SQLException {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		session.refresh(p);

@@ -1,5 +1,6 @@
 package fr.esigelec.projetHibernate.dao.hibernate;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -13,7 +14,7 @@ public class VilleDAOImpl implements IVilleDAO {
 	 * ajouter une ville
 	 * @param v ville
 	 */
-	public void ajouter(Ville v) {
+	public void ajouter(Ville v) throws SQLException {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		session.save(v);
@@ -26,7 +27,7 @@ public class VilleDAOImpl implements IVilleDAO {
 	 * @param id identifiant de la ville
 	 * @return instance ville
 	 */
-	public Ville getVille(int id) {
+	public Ville getVille(int id) throws SQLException {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		Ville retour = (Ville) session.get(Ville.class, id);
@@ -39,7 +40,7 @@ public class VilleDAOImpl implements IVilleDAO {
 	 * Récupération de l'ensemble de villes
 	 * @return l'ensemble de villes
 	 */
-	public List<Ville> getVilles() {
+	public List<Ville> getVilles() throws SQLException {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		// get pays en utilisant HQL
@@ -55,7 +56,7 @@ public class VilleDAOImpl implements IVilleDAO {
 	 * Mise-à-jour d'une ville 
 	 * @param v ville
 	 */
-	public void update(Ville v) {
+	public void update(Ville v) throws SQLException {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		session.update(v);
@@ -67,7 +68,7 @@ public class VilleDAOImpl implements IVilleDAO {
 	 * Suppression d'une ville
 	 * @param v ville
 	 */
-	public void delete(Ville v) {
+	public void delete(Ville v) throws SQLException {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		session.delete(v);
@@ -79,7 +80,7 @@ public class VilleDAOImpl implements IVilleDAO {
 	 * Refresh d'une ville
 	 * @param v
 	 */
-	public void refresh(Ville v) {
+	public void refresh(Ville v) throws SQLException {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		session.refresh(v);
