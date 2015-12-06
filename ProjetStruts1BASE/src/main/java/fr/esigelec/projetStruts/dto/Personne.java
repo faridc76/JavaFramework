@@ -5,26 +5,36 @@ public class Personne {
 	private int id;
 	private String nom;
 	private String prenom;
+	int age;
 	
 	
 	
-	
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
 	public Personne() {
 		super();
 	}
 
-	public Personne(int id,String nom, String prenom) {
+	public Personne(int id,String nom, String prenom, int age) {
 		super();
 		this.id=id;
 		this.nom = nom;
 		this.prenom = prenom;
+		this.age = age;
 	}
 	
-	public Personne(String nom, String prenom) {
+	public Personne(String nom, String prenom, int age) {
 		super();
 		this.id=0;
 		this.nom = nom;
 		this.prenom = prenom;
+		this.age = age;
 	}
 	
 	public int getId() {
@@ -47,7 +57,7 @@ public class Personne {
 	}
 	
 	public String toString(){
-		return nom+" "+ prenom;
+		return nom+" "+prenom + " " + age + " ans";
 	}
 
 }

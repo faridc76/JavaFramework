@@ -20,15 +20,13 @@ public class AjouterPersonneAction extends Action {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 
-			PersonneForm f=(PersonneForm)form;
+			PersonneForm f = (PersonneForm)form;
 
-			Personne p=new Personne(f.getNom(),f.getPrenom());
-			
+			Personne p = new Personne(f.getNom(),f.getPrenom(), f.getAge());
 			IPersonneDAO personneDAO=PersonneDAOFactory.getPersonneDAO();
 			personneDAO.ajouter(p);
 			request.setAttribute("liste",personneDAO.getListe());
 			
 			return mapping.findForward("succes");
-		
 	}
 }

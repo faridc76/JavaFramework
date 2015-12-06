@@ -17,16 +17,17 @@ public class PersonneDAOImpl implements IPersonneDAO {
 	
 	/**
 	 * Ajoute une personne dans la BDD
-	 * @param p la personne à ajouter
+	 * @param p la personne ï¿½ ajouter
 	 */
 	@Override
 	public void ajouter(Personne p) {
 		PreparedStatement stmt=null;
 		Connection con=ConnexionBDDPool.getInstance().getConnection();
 		try {
-			stmt=con.prepareStatement("INSERT INTO personne (nom,prenom) VALUES (?,?)");
+			stmt=con.prepareStatement("INSERT INTO personne (nom,prenom,age) VALUES (?,?,?)");
 			stmt.setString(1,p.getNom());
 			stmt.setString(2,p.getPrenom());
+			stmt.setInt(3,p.getAge());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -37,7 +38,7 @@ public class PersonneDAOImpl implements IPersonneDAO {
 	}
 
 	/**
-	 * Récupère la liste des personne de la BDD
+	 * Rï¿½cupï¿½re la liste des personne de la BDD
 	 * @return la liste des personnes
 	 */
 	@Override
@@ -49,8 +50,7 @@ public class PersonneDAOImpl implements IPersonneDAO {
 			stmt=con.prepareStatement("SELECT * FROM  personne");
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()){
-				retour.add(new Personne(rs.getInt("id"),rs.getString("nom"),rs.getString("prenom")));
-				
+				retour.add(new Personne(rs.getInt("id"),rs.getString("nom"),rs.getString("prenom"),rs.getInt("age")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -62,8 +62,8 @@ public class PersonneDAOImpl implements IPersonneDAO {
 
 
 	/**
-	 * Supprime une personne de la BDD à partir de son id
-	 * @param id id de la personne à supprimer
+	 * Supprime une personne de la BDD ï¿½ partir de son id
+	 * @param id id de la personne ï¿½ supprimer
 	 */
 	@Override
 	public void supprimer(int id) {
@@ -79,6 +79,26 @@ public class PersonneDAOImpl implements IPersonneDAO {
 			ConnexionBDDPool.close(stmt);
 		}
 		
+	}
+
+	@Override
+	public List<Personne> getFamille(String nom) {
+		List<Personne> retour=new ArrayList<Personne>();
+		PreparedStatement stmt=null;
+		Connection con=ConnexionBDDPool.getInstance().getConnection();
+		try {
+			stmt=con.prepareStatement("SELECT * FROM  personne WHERE nom = ?");
+			stmt.setString(1, nom);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()){
+				retour.add(new Personne(rs.getInt("id"),rs.getString("nom"),rs.getString("prenom"),rs.getInt("age")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			ConnexionBDDPool.close(stmt);
+		}
+		return retour;
 	}
 
 	

@@ -14,4 +14,6 @@ public interface IPersonneDAO {
 	
 	public List<Personne> getListe();
 
+	public List<Personne> getFamille(String nom);
+
 }

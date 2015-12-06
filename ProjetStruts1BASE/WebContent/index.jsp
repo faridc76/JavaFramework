@@ -12,20 +12,29 @@
 <h1>Ajouter une personne :</h1>
 <html:form action="AjouterPersonne" method="post">
 <table style="margin:100px 0px 0px 200px">
+
 <tr>
 <td>Nom : </td>
 <td><html:text property="nom" /> <b style="color:red"><html:errors property="erreur.nom"/></b></td>
 </tr>
+
 <tr>
 <td>Prénom : </td>
 <td><html:text property="prenom" /> <b style="color:red"><html:errors property="erreur.prenom"/></b></td>
 </tr>
+
+<tr>
+<td>Age : </td>
+<td><html:text property="age" /> <b style="color:red"><html:errors property="erreur.age"/></b></td>
+</tr>
+
 <tr>
 <td></td>
 <td>
 <html:submit value="envoyer" />
 </td>
 </tr>
+
 </table>
 </html:form>
 </body>

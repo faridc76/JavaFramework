@@ -29,7 +29,7 @@ for(Personne p:l){ %>
 
 <logic:iterate name="liste" id="pers" >
 <bean:write name="pers" property="id"/> - 
-<bean:write name="pers" property="nom"/>
+<html:link action="VoirFamille" title="VoirFamille" paramId="nom" paramName="pers" paramProperty="nom"><bean:write name="pers" property="nom"/></html:link>
 <bean:write name="pers" property="prenom"/>
 <html:link action="SupprimerPersonne" title="supprimer"  paramId="id" paramName="pers" paramProperty="id">X</html:link>
 <br/>
