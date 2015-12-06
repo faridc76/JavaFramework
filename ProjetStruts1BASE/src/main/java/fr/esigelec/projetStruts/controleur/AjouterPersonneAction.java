@@ -9,7 +9,6 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-
 import fr.esigelec.projetStruts.dao.*;
 import fr.esigelec.projetStruts.dto.*;
 
@@ -23,9 +22,10 @@ public class AjouterPersonneAction extends Action {
 			PersonneForm f = (PersonneForm)form;
 
 			Personne p = new Personne(f.getNom(),f.getPrenom(), f.getAge());
-			IPersonneDAO personneDAO=PersonneDAOFactory.getPersonneDAO();
-			personneDAO.ajouter(p);
-			request.setAttribute("liste",personneDAO.getListe());
+			//Par Hibernate
+			DAOFactory dao = DAOFactory.getDAOFactory(DAOFactory.HIBERNATE);
+			dao.getPersonneDAO().ajouter(p);
+			request.setAttribute("liste",dao.getPersonneDAO().getListe());
 			
 			return mapping.findForward("succes");
 	}

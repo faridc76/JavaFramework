@@ -10,18 +10,18 @@ import org.apache.struts.action.ActionMapping;
 
 import fr.esigelec.projetStruts.dao.DAOFactory;
 
-public class SupprimerPersonneAction extends Action {
+
+public class VoirFamilleAction extends Action {
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 
-		int id=new Integer(request.getParameter("id"));
+		String nom = new String(request.getParameter("nom"));
 		
 		//Par JDBC
 		DAOFactory dao = DAOFactory.getDAOFactory(DAOFactory.JDBC);
-		dao.getPersonneDAO().supprimer(id);
-		request.setAttribute("liste",dao.getPersonneDAO().getListe());
+		request.setAttribute("memeFamille", dao.getPersonneDAO().getFamille(nom));
 
 		return mapping.findForward("succes");
 	}
