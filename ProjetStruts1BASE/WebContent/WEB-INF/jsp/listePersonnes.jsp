@@ -9,10 +9,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Liste</title>
+<title><bean:message key="message.title.list"/></title>
 </head>
 <body>
-<h1>Liste des clients SANS taglibs de struts :</h1>
+<h1><bean:message key="message.title.noTag"/></h1>
 <div>
 <%
 List<Personne> l=(List<Personne>)request.getAttribute("liste");
@@ -21,11 +21,11 @@ for(Personne p:l){ %>
 <a href="SupprimerPersonne.do?id=<%=p.getId() %>" title="supprimer">X</a><br/>
 
 <%} %>
-<a href="RetourIndex.do">Ajouter une nouvelle personne</a>
+<a href="RetourIndex.do"><bean:message key="message.list.add"/></a>
 </div>
 <div>
 
-<h1>Liste des clients AVEC taglibs de struts :</h1>
+<h1><bean:message key="message.tag"/></h1>
 
 <logic:iterate name="liste" id="pers" >
 <bean:write name="pers" property="id"/> - 
@@ -35,7 +35,7 @@ for(Personne p:l){ %>
 <br/>
 
 </logic:iterate>
-<html:link action="RetourIndex">Ajouter une nouvelle personne</html:link>
+<html:link action="RetourIndex"><bean:message key="message.list.add"/></html:link>
 </div>
 <%--autre exemple d'affichage de l'attribut liste --%>
 ${liste}

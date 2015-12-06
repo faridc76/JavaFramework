@@ -7,18 +7,19 @@
   <display-name>ProjetStruts</display-name>
   
   <servlet>
-  <servlet-name>action</servlet-name>
-  <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
-  <load-on-startup>1</load-on-startup>
+    <servlet-name>action</servlet-name>
+    <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
-  <servlet-name>action</servlet-name>
-  <url-pattern>*.do</url-pattern>
-  
+    <servlet-name>action</servlet-name>
+    <url-pattern>*.do</url-pattern>
   </servlet-mapping>
   
-  
-  
+  <context-param>
+   <param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name>
+   <param-value>FR</param-value>
+  </context-param>
   
   
   <welcome-file-list>

@@ -9,12 +9,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>La même famille</title>
+<title><bean:message key="message.title.familly"/></title>
 </head>
 <body>
 <div>
 
-<h1>Liste des clients de la famille</h1>
+<h1><bean:message key="message.familly"/></h1>
 
 <logic:iterate name="memeFamille" id="pers" >
 <bean:write name="pers" property="id"/> - 

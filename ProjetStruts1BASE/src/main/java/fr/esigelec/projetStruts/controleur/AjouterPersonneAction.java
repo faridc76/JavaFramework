@@ -1,6 +1,8 @@
 package fr.esigelec.projetStruts.controleur;
 import fr.esigelec.projetStruts.forms.*;
 
+import java.util.Locale;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,7 +22,7 @@ public class AjouterPersonneAction extends Action {
 			throws Exception {
 
 			PersonneForm f = (PersonneForm)form;
-
+			setLocale( request, new Locale("en", "EN"));
 			Personne p = new Personne(f.getNom(),f.getPrenom(), f.getAge());
 			//Par Hibernate
 			DAOFactory dao = DAOFactory.getDAOFactory(DAOFactory.HIBERNATE);

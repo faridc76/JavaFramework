@@ -47,7 +47,4 @@ REMARQUE : les attributs forward,include et type sont mutuellement exclusifs
 
 <message-resources parameter="mesMessages"></message-resources>
 
-
-
-
 </struts-config>
