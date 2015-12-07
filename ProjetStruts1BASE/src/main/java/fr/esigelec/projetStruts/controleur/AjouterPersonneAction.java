@@ -22,10 +22,10 @@ public class AjouterPersonneAction extends Action {
 			throws Exception {
 
 			PersonneForm f = (PersonneForm)form;
-			setLocale( request, new Locale("en", "EN"));
+			//setLocale( request, new Locale("en", "EN"));
 			Personne p = new Personne(f.getNom(),f.getPrenom(), f.getAge());
 			//Par Hibernate
-			DAOFactory dao = DAOFactory.getDAOFactory(DAOFactory.HIBERNATE);
+			DAOFactory dao = DAOFactory.getDAOFactory(DAOFactory.JDBC);
 			dao.getPersonneDAO().ajouter(p);
 			request.setAttribute("liste",dao.getPersonneDAO().getListe());
 			

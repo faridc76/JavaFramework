@@ -12,7 +12,7 @@
 <title><bean:message key="message.title.list"/></title>
 </head>
 <body>
-<h1><bean:message key="message.title.noTag"/></h1>
+<h1><bean:message key="message.noTag"/></h1>
 <div>
 <%
 List<Personne> l=(List<Personne>)request.getAttribute("liste");

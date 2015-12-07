@@ -18,11 +18,14 @@ public class PersonneDAOImpl implements IPersonneDAO {
 	/**
 	 * Ajoute une personne dans la BDD
 	 * @param p la personne � ajouter
+	 * @throws SQLException 
+	 * @throws NullPointerException 
 	 */
 	@Override
-	public void ajouter(Personne p) {
+	public void ajouter(Personne p) throws SQLException, NullPointerException {
 		PreparedStatement stmt=null;
-		Connection con=ConnexionBDDPool.getInstance().getConnection();
+		Connection con = ConnexionBDDPool.getInstance().getConnection();
+		
 		try {
 			stmt=con.prepareStatement("INSERT INTO personne (nom,prenom,age) VALUES (?,?,?)");
 			stmt.setString(1,p.getNom());
@@ -40,9 +43,10 @@ public class PersonneDAOImpl implements IPersonneDAO {
 	/**
 	 * R�cup�re la liste des personne de la BDD
 	 * @return la liste des personnes
+	 * @throws SQLException 
 	 */
 	@Override
-	public List<Personne> getListe() {
+	public List<Personne> getListe() throws SQLException {
 		List<Personne> retour=new ArrayList<Personne>();
 		PreparedStatement stmt=null;
 		Connection con=ConnexionBDDPool.getInstance().getConnection();
@@ -64,9 +68,10 @@ public class PersonneDAOImpl implements IPersonneDAO {
 	/**
 	 * Supprime une personne de la BDD � partir de son id
 	 * @param id id de la personne � supprimer
+	 * @throws SQLException 
 	 */
 	@Override
-	public void supprimer(int id) {
+	public void supprimer(int id) throws SQLException {
 		PreparedStatement stmt=null;
 		Connection con=ConnexionBDDPool.getInstance().getConnection();
 		try {
@@ -82,7 +87,7 @@ public class PersonneDAOImpl implements IPersonneDAO {
 	}
 
 	@Override
-	public List<Personne> getFamille(String nom) {
+	public List<Personne> getFamille(String nom) throws SQLException {
 		List<Personne> retour=new ArrayList<Personne>();
 		PreparedStatement stmt=null;
 		Connection con=ConnexionBDDPool.getInstance().getConnection();

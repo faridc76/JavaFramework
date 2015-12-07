@@ -47,20 +47,15 @@ public class ConnexionBDDPool {
 		return instance;
 	}
 
-	public Connection getConnection() {
+	public Connection getConnection() throws SQLException {
 		//System.out.println(((BasicDataSource)datasource).getNumActive());
 		//System.out.println(((BasicDataSource)datasource).getNumIdle());
 		Connection retour = null;
-		try {
-			retour = datasource.getConnection();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		retour = datasource.getConnection();
 		return retour;
 	}
 
-	public static void close(Statement stmt) {
+	public static void close(Statement stmt) throws NullPointerException {
 		Connection c = null;
 		try {
 			c = stmt.getConnection();
