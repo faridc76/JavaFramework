@@ -9,6 +9,7 @@ n° | project name | type
 2 | [GarageHibernate][2] | Hibernate
 3 | [geographie][3] | Hibernate
 4 | [TestMapping][4], [ProjetStruts1BASE][5] | Struts
+5 | [BonusJSTL][6] | JSTL
 
 You can check each project for more details.
 
@@ -17,3 +18,4 @@ You can check each project for more details.
 [3]: https://github.com/faridc76/JavaFramework/tree/master/geographie
 [4]: https://github.com/faridc76/JavaFramework/tree/master/TestMapping
 [5]: https://github.com/faridc76/JavaFramework/tree/master/ProjetStruts1BASE
+[6]: https://github.com/faridc76/JavaFramework/tree/master/BonusJSTL
