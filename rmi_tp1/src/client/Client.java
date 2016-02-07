@@ -11,9 +11,9 @@ public class Client {
 	
 	public static void main(String[] args) {
 		try {
-			System.out.println("Recherche de l'objet serveur...");
+			System.out.println("Searching talkable object in server...");
 			Talkable hello = (Talkable)
-					Naming.lookup("rmi://" + HOST + "/HelloWorld");
+					Naming.lookup("rmi://" + HOST + "/Talkable");
 			System.out.println("Invocation of method sayHello ...");
 			String result = hello.sayHello();
 			System.out.println("Showing result:");
