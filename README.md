@@ -10,6 +10,7 @@ n° | project name | type
 3 | [geographie][3] | Hibernate
 4 | [TestMapping][4], [ProjetStruts1BASE][5] | Struts
 5 | [BonusJSTL][6] | JSTL
+6 | [rmi_tp1][7] | RMI
 
 You can check each project for more details.
 
@@ -19,3 +20,4 @@ You can check each project for more details.
 [4]: https://github.com/faridc76/JavaFramework/tree/master/TestMapping
 [5]: https://github.com/faridc76/JavaFramework/tree/master/ProjetStruts1BASE
 [6]: https://github.com/faridc76/JavaFramework/tree/master/BonusJSTL
+[7]: https://github.com/faridc76/JavaFramework/tree/master/rmi_tp1
