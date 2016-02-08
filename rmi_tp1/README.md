@@ -10,7 +10,9 @@ Go to the path `$RMI_TP1_HOME/bin`, then start the rmi registry in your command 
 Run the server class in Eclipse, Run as `Java Application`
 
 ```
-
+Creating server object ...
+Referencing in RMI Registry ...
+Waiting invocations - CTRL-C to stop
 ```
 
 ## Call remote object on client side
