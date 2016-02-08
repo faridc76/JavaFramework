@@ -8,7 +8,7 @@ import javax.ejb.Stateless;
  * @author mincong-h
  */
 @Stateless
-public class Calculator implements CalculatorLocal {
+public class Calculator implements CalculatorRemote {
 
     private final int BONUS_RATE = 100;
 	

@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,8 +23,6 @@ public class SimpleBonusServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -5727276180170917125L;
 	private final Logger log = Logger.getLogger(SimpleBonusServlet.class);
-	@EJB
-	private session.CalculatorLocal ejb;
 	
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) 

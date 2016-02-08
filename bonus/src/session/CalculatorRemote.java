@@ -1,13 +1,13 @@
 package session;
 
-import javax.ejb.Local;
+import javax.ejb.Remote;
 
 /**
  * Interface for calculator
  * 
  * @author mincong-h
  */
-@Local
-public interface CalculatorLocal {
+@Remote
+public interface CalculatorRemote {
 	public double bonus(double multiplier);
 }
