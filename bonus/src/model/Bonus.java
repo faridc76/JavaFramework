@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * Entite is used instead of this class.
+ * 
+ * @deprecated
+ * @author minconghuang
+ */
 public class Bonus {
 	private String ssn;
 	private double multiplier;

@@ -39,5 +39,9 @@
       <button type="submit">Submit</button>
       <button type="reset">Reset</button>
     </form>
+    <hr>
+    <form method="post" action="${pageContext.request.contextPath}/get-bonuses">
+      <button type="submit">Submit</button>
+    </form>
   </body>
 </html>
