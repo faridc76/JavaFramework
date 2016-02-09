@@ -40,18 +40,8 @@
       <button type="reset">Reset</button>
     </form>
     <hr>
-    
-    <h1>Find all bonuses</h1>
     <form method="post" action="${pageContext.request.contextPath}/get-bonuses">
       <button type="submit">Submit</button>
     </form>
-    <hr>
-    
-    <h1>Find a bonus using ssn</h1>
-    <form method="post" action="${pageContext.request.contextPath}/get-bonus">
-      <input id="ssn" name="ssn" value="123" placeholder="your SSN">
-      <button type="submit">Search</button>
-    </form>
-    <c:if test="${targetBonus != null}"><p>Réponse trouvée : ${targetBonus.ssn}, ${targetBonus.bonus}</p></c:if>
   </body>
 </html>

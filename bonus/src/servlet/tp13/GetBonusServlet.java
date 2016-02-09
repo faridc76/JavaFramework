@@ -1,7 +1,6 @@
-package servlet.tp12;
+package servlet.tp13;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -19,15 +18,15 @@ import session.BonusSessionLocal;
 
 
 /**
- * Servlet for processing bonus for a simple user.
+ * TP13: Servlet for find an existing bonus using its ssn from database.
  * 
  * @author mincong-h
  */
-@WebServlet("/get-bonuses")
-public class GetBonusesServlet extends HttpServlet {
+@WebServlet("/get-bonus")
+public class GetBonusServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -5727276180170917125L;
-	private final Logger log = Logger.getLogger(GetBonusesServlet.class);
+	private final Logger log = Logger.getLogger(GetBonusServlet.class);
 	@EJB
 	private BonusSessionLocal session;
 	
@@ -36,13 +35,12 @@ public class GetBonusesServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		log.info("doPost called");
-		List<Bonus> bonuses = session.getBonuses();
-		if (bonuses != null) {
-			for (Bonus bonus: bonuses) {
-				log.info(bonus.getSsn() + ", " + bonus.getBonus());
-			}
-		} else {
-			log.warn("No bonuses in table bonus of the database.");
+		req.getSession().setAttribute("targetBonus", null); // reset targetBonus
+		String ssn = req.getParameter("ssn");
+		Bonus bonus = session.getBonus(ssn);
+		if (bonus != null) {
+			log.info(bonus.getSsn() + ", " + bonus.getBonus());
+			req.getSession().setAttribute("targetBonus", bonus);
 		}
 		log.info("redirect to index.jsp");
 		resp.sendRedirect("index.jsp");
