@@ -28,11 +28,10 @@ public class MultipleBonusServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = -6470619585301979577L;
 	private final Logger log = Logger.getLogger(MultipleBonusServlet.class);
-	//private final String HOST = "10.20.33.102";
-	//private final String HOST = "localhost";
-	private final String CALCULATOR_REMOTE = 
-			//"java:global/bonusEJB/Calculator!session.CalculatorRemote";
-			//"java:jboss/exported/bonusEJB/Calculator!session.CalculatorRemote";
+	// Lookup the bean using the ejb: namespace syntax which is explained here
+	// https://docs.jboss.org/author/display/AS71/EJB+invocations+from+a+remote+client+using+JNDI
+	private final String JNDI_BINDING = 
+			//"ejb:/bonusEJB/Calculator!session.CalculatorRemote";
 			"ejb:/bonusEJB/Calculator!session.CalculatorRemote";
 	
 	@Override
@@ -74,18 +73,28 @@ public class MultipleBonusServlet extends HttpServlet {
 	private Bonus[] getBonuses(String[] ssn, String[] multiplierStr)
 			throws NamingException {
 		
-		// call remote EJB calculator
-		//Properties props = new Properties();
-		//props.put(Context.INITIAL_CONTEXT_FACTORY, "org.jboss.naming.remote.client.InitialContextFactory");
-		//props.put(Context.PROVIDER_URL, "http-remoting://" + HOST +":8080");
-		//props.put("jboss.naming.client.ejb.context", true);
-		//InitialContext ctx = new InitialContext(props);
-		Properties prop = new Properties();
-		prop.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
-		Context ctx = new InitialContext(prop);
-		log.info("lookup=" + CALCULATOR_REMOTE);
-		CalculatorRemote calculator = (CalculatorRemote) ctx.lookup(CALCULATOR_REMOTE);
-		log.debug("Context has been successfully initialized.");
+		// If there's any configuration problem, take a look at:
+		// 
+		// EJB invocations from a remote client using JNDI
+		// https://docs.jboss.org/author/display/AS71/EJB+invocations+from+a+remote+client+using+JNDI
+		// 
+		// Remote EJB invocations via JNDI - EJB client API or remote-naming project
+		// https://docs.jboss.org/author/display/AS71/Remote+EJB+invocations+via+JNDI+-+EJB+client+API+or+remote-naming+project
+		//
+		// javax.naming.NamingException: Failed instantiate InitialContextFactory org.jboss.naming.remote.client.InitialContextFactory from classloader
+		// http://stackoverflow.com/questions/13065025/javax-naming-namingexception-failed-instantiate-initialcontextfactory-org-jboss
+		//
+		// Cannot connect to Remote EJB deployed to 7.1 instance, from another 7.1 instance
+		// https://developer.jboss.org/thread/195516?tstart=0
+		
+		Properties props = new Properties();
+		props.put(Context.INITIAL_CONTEXT_FACTORY, "org.jboss.naming.remote.client.InitialContextFactory");
+		props.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
+		props.put(Context.PROVIDER_URL, "remote://192.168.1.13:4447");
+		props.put(Context.SECURITY_PRINCIPAL, "testuser");
+        props.put(Context.SECURITY_CREDENTIALS, "testpassword");
+		Context ctx = new InitialContext(props);   
+		CalculatorRemote calculator = (CalculatorRemote) ctx.lookup(JNDI_BINDING);
 		
 		// assume that 2 input arrays have the same length
 		Bonus[] bonus = new Bonus[ssn.length];
