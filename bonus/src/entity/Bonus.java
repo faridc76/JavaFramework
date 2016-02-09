@@ -42,4 +42,8 @@ public class Bonus implements Serializable {
 		this.bonus = bonus;
 	}
 
+	@Override
+	public String toString() {
+		return "Bonus [ssn=" + ssn + ", bonus=" + bonus + "]";
+	}
 }

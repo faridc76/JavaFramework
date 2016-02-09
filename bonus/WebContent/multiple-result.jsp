@@ -11,7 +11,7 @@
     <p>Bonus Result</p>
     <c:forEach var="bonus" items="${bonuses}">
       <p>SSN : <c:out value="${bonus.ssn}" default="NULL" /></p>
-      <p>Multiplier : <c:out value="${bonus.multiplier}" default="NULL" /></p>
+      <!-- <p>Multiplier : <c:out value="${bonus.multiplier}" default="NULL" /></p> -->
       <p>Bonus : <c:out value="${bonus.bonus}" default="NULL" /></p>
       <hr>
     </c:forEach>

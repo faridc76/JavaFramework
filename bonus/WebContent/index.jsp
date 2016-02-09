@@ -53,5 +53,29 @@
       <button type="submit">Search</button>
     </form>
     <c:if test="${targetBonus != null}"><p>Réponse trouvée : ${targetBonus.ssn}, ${targetBonus.bonus}</p></c:if>
+    <hr>
+    
+    <h1>One to many</h1>
+    <form method="post" action="${pageContext.request.contextPath}/add-bonuses">
+      <table>
+        <thead>
+          <tr>
+            <th>SSN</th>
+            <th>Multiplier</th>
+          </tr>
+        </thead>
+        <tbody>
+          <c:forEach var="i" begin="1" end="9">
+            <tr>
+              <c:if test="${i % 3 == 1}"><td><input id="ssn" name="ssn" value="${i * 3}" type="text"></td></c:if>
+              <c:if test="${i % 3 != 1}"><td></td></c:if>
+              <td><input id="multiplier" name="multiplier" value="${i}" type="number"></td>
+            </tr>
+          </c:forEach>
+        </tbody>
+      </table>
+      <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
+    </form>
   </body>
 </html>

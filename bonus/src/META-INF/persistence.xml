@@ -3,5 +3,7 @@
   <persistence-unit name="bonus">
     <jta-data-source>java:jboss/datasources/bonusDS</jta-data-source>
   	<class>entity.Bonus</class>
+  	<class>entity.MultipleBonus</class>
+  	<class>entity.Ssn</class>
   </persistence-unit>
 </persistence>
