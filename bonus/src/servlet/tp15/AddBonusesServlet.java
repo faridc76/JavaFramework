@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.jboss.logging.Logger;
 
 import session.MultipleBonusSessionLocal;
-import entity.Bonus;
+import session.SsnSessionLocal;
 import entity.MultipleBonus;
 import entity.Ssn;
 
@@ -30,6 +30,8 @@ public class AddBonusesServlet extends HttpServlet {
 	private final Logger log = Logger.getLogger(AddBonusesServlet.class);
 	@EJB
 	private MultipleBonusSessionLocal multipleBonusSession;
+	@EJB
+	private SsnSessionLocal ssnSession;
 	
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) 
@@ -42,11 +44,22 @@ public class AddBonusesServlet extends HttpServlet {
 		ssns = req.getParameterValues("ssn");
 		multipliers = req.getParameterValues("multiplier");
 		
+		log.debug("Creating ssns...");
+		for (String s: ssns) {
+			Ssn ssn = new Ssn();
+			ssn.setSsn(s);
+			ssnSession.createSsn(ssn);
+		}
+		
 		log.debug("Constucting multiple bonuses ...");
 		multipleBonuses = getBonuses(ssns, multipliers);
 		for (MultipleBonus multipleBonus: multipleBonuses) {
 			log.info(multipleBonus);
-			multipleBonusSession.create(multipleBonus);
+			try {
+				multipleBonusSession.create(multipleBonus);
+			} catch (Exception e) {
+				log.error(e.getStackTrace());
+			}
 		}
 		req.setAttribute("multipleBonuses", multipleBonuses);
 		log.debug("Finished. Dispatch to result.jsp");

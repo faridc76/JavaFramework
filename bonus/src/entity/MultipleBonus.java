@@ -16,12 +16,13 @@ public class MultipleBonus implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
 	private double bonus;
 
 	//bi-directional many-to-one association to Ssn
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name="ssn")
 	private Ssn ssn;
 

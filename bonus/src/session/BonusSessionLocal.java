@@ -5,7 +5,6 @@ import java.util.List;
 import javax.ejb.Local;
 
 import entity.Bonus;
-import entity.Ssn;
 
 @Local
 public interface BonusSessionLocal {

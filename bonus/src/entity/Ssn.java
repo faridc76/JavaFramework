@@ -1,7 +1,9 @@
 package entity;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -18,7 +20,7 @@ public class Ssn implements Serializable {
 	private String ssn;
 
 	//bi-directional many-to-one association to MultipleBonus2
-	@OneToMany(mappedBy="ssn")
+	@OneToMany(mappedBy="ssn", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<MultipleBonus> multipleBonuses;
 
 	public Ssn() {
