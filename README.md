@@ -1,5 +1,6 @@
 # JavaFramework
-Course ESIGELEC : Java Frameworks
+
+## Course ESIGELEC : Java Frameworks
 
 This repository contains the practical work for the Course ESIGELEC : Java Frameworks. In this course, we are taught to use different frameworks Java for various usages, as you can see in the following table :
 
@@ -14,6 +15,12 @@ n° | project name | type
 
 You can check each project for more details.
 
+## Self learning framework
+
+Other frameworks outside of the course.
+
+1. _mock_ for unit testing with [Mockito][mockito] and [Easy Mock][eastmock]
+
 [1]: https://github.com/faridc76/JavaFramework/tree/master/geographie
 [2]: https://github.com/faridc76/JavaFramework/tree/master/GarageHibernate
 [3]: https://github.com/faridc76/JavaFramework/tree/master/geographie
@@ -21,3 +28,5 @@ You can check each project for more details.
 [5]: https://github.com/faridc76/JavaFramework/tree/master/ProjetStruts1BASE
 [6]: https://github.com/faridc76/JavaFramework/tree/master/BonusJSTL
 [7]: https://github.com/faridc76/JavaFramework/tree/master/rmi_tp1
+[mockito]: http://mockito.org
+[easymock]: http://easymock.org/
