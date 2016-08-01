@@ -19,7 +19,7 @@ You can check each project for more details.
 
 Other frameworks outside of the course.
 
-1. _mock_ for unit testing with [Mockito][mockito] and [Easy Mock][eastmock]
+1. _mock_ for unit testing with [Mockito][mockito] and [Easy Mock][easymock]
 
 [1]: https://github.com/faridc76/JavaFramework/tree/master/geographie
 [2]: https://github.com/faridc76/JavaFramework/tree/master/GarageHibernate
