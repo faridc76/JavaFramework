@@ -13,7 +13,10 @@ import org.hibernate.StatelessSession;
 import org.hibernate.criterion.Projection;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.OngoingStubbing;
 
 import io.mincongh.zoo.Animal;
@@ -25,26 +28,28 @@ import io.mincongh.zoo.ZooKeeper;
  *
  * @author Mincong Huang
  */
+@RunWith(MockitoJUnitRunner.class)
 public class ZooKeeperMockTest {
 
     private final int ANIMAL_ROWS = 12;
 
+    @Mock
     private SessionFactory mockedSessionFactory;
+
+    @Mock
     private StatelessSession mockedStatelessSession;
+
+    @Mock
     private ScrollableResults mockedScroll;
+
+    @Mock
     private Session mockedSession;
+
+    @Mock
     private Criteria mockedCriteria;
 
     @Before
     public void setUp() {
-
-        mockedSessionFactory = Mockito.mock(SessionFactory.class);
-        mockedStatelessSession = Mockito.mock(StatelessSession.class);
-        mockedScroll = Mockito.mock(ScrollableResults.class);
-        mockedSession = Mockito.mock(Session.class);
-        mockedCriteria = Mockito.mock(Criteria.class);
-
-        Mockito.reset(mockedSessionFactory, mockedSession, mockedCriteria);
 
         // mock session factory, stateless session, session
         Mockito.when(mockedSessionFactory.openStatelessSession())
