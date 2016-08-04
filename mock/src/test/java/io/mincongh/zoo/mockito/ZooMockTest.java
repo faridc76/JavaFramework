@@ -1,6 +1,6 @@
 package io.mincongh.zoo.mockito;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -40,11 +40,11 @@ public class ZooMockTest {
 
     @Test
     public void testHasKing() {
-        assertEquals(true, zoo.hasKing());
+        assertTrue(zoo.hasKing());
     }
 
     @Test
     public void testHasQueen() {
-        assertEquals(true, zoo.hasQueen());
+        assertTrue(zoo.hasQueen());
     }
 }
